@@ -934,7 +934,7 @@
     padding: 4px 0;
   }
 </style>
-<script id="__embedded_cloud_config__" type="application/json">{"url":"https://uchfjnxcyspseqpfbaxm.supabase.co","key":"sb_publishable_fO8pk_lDUaCu1DCKRi7Ywg_qjVjLcPg","inviteId":"invite_1787826782150_t39uvv"}</script>
+<script id="__embedded_cloud_config__" type="application/json">{"url":"https://uchfjnxcyspseqpfbaxm.supabase.co","key":"sb_publishable_fO8pk_lDUaCu1DCKRi7Ywg_qjVjLcPg","inviteId":"invite_1787830577639_ntjua1"}</script>
 </head>
 <body>
 
@@ -962,12 +962,12 @@
 
       <div class="quick-users">
         <h4>本机已有账号（点击快捷登录）</h4>
-        <div class="user-chips" id="quick-users"><span class="user-chip" onclick="quickLogin('liubin')">
-       <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#059669;margin-right:4px;vertical-align:middle;"></span>
-       liubin
-     </span><span class="user-chip" onclick="quickLogin('gaoluyang')">
+        <div class="user-chips" id="quick-users"><span class="user-chip" onclick="quickLogin('gaoluyang')">
        <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#4f46e5;margin-right:4px;vertical-align:middle;"></span>
-       gaoluyang
+       gaoluyang<span style="font-size:10px;color:var(--text-soft);margin-left:4px;">@gaoluyang</span>
+     </span><span class="user-chip" onclick="quickLogin('liubin')">
+       <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#059669;margin-right:4px;vertical-align:middle;"></span>
+       liubin<span style="font-size:10px;color:var(--text-soft);margin-left:4px;">@liubin</span>
      </span></div>
       </div>
     </div>
@@ -1018,7 +1018,7 @@
 
     <div class="active-users">
       <span style="font-size:12px;color:var(--text-muted)">在线：</span>
-      <div class="avatar-stack" id="online-users"><div class="avatar" style="background:#4f46e5;" title="视觉-负责人">视</div><div class="avatar me" style="background:#4f46e5;" title="gaoluyang (我)">G</div><div class="avatar" style="background:#059669;" title="liubin">L</div></div>
+      <div class="avatar-stack" id="online-users"></div>
       <span class="divider"></span>
       <div class="user-menu">
         <div class="user-menu-trigger" onclick="toggleUserMenu(event)">
@@ -1056,7 +1056,7 @@
       </div>
       <hr>
       <div class="nav-item" data-target="section-drama" onclick="scrollToSection('section-drama', this)">
-        <span>剧集</span><span class="count" id="count-drama">6</span>
+        <span>剧集</span><span class="count" id="count-drama">7</span>
       </div>
       <div class="nav-item" data-target="section-variety" onclick="scrollToSection('section-variety', this)">
         <span>综艺</span><span class="count" id="count-variety">2</span>
@@ -1075,21 +1075,11 @@
       <div class="online-panel" id="online-panel" style="display: flex;">
         <div class="online-title">
           <span class="pulse-dot"></span>
-          <span id="online-panel-title">当前在线（3）</span>
+          <span id="online-panel-title">当前在线（1）</span>
         </div>
         <div id="online-user-list" style="display:flex;gap:8px;flex-wrap:wrap;flex:1;"><div class="online-user-card me" title="gaoluyang (我)">
       <div class="avatar-sm" style="background:#4f46e5">G</div>
       <span>gaoluyang <span style="opacity:0.7;font-weight:normal">(我)</span></span>
-      
-      
-    </div><div class="online-user-card" title="视觉-负责人">
-      <div class="avatar-sm" style="background:#4f46e5">视</div>
-      <span>视觉-负责人</span>
-      
-      
-    </div><div class="online-user-card" title="liubin">
-      <div class="avatar-sm" style="background:#059669">L</div>
-      <span>liubin</span>
       
       
     </div></div>
@@ -1128,37 +1118,45 @@
       <!-- 剧集 -->
       <section class="section" id="section-drama">
         <div class="section-header">
-          <h2>剧集 <span class="badge" id="badge-drama">6 个项目</span></h2>
+          <h2>剧集 <span class="badge" id="badge-drama">7 个项目</span></h2>
           <div class="actions">
             <button class="btn small" onclick="addCard('drama')">＋ 添加剧集</button>
           </div>
         </div>
         <div class="cards-grid" id="grid-drama">
-    <div class="project-card" data-id="6ce0d8ad-234e-419f-86b4-192115059df9">
+    <div class="project-card" data-id="282fc606-9d31-4a3d-a44f-aab734f4ee67">
       <div class="card-head">
-        <div class="card-title" data-lock-key="card:6ce0d8ad-234e-419f-86b4-192115059df9:title">
-          <input type="text" value="" placeholder="《项目名称》" onchange="updateCardField('drama','6ce0d8ad-234e-419f-86b4-192115059df9','title',this.value)">
+        <div class="card-title" data-lock-key="card:282fc606-9d31-4a3d-a44f-aab734f4ee67:title">
+          <input type="text" value="" placeholder="《项目名称》" onchange="updateCardField('drama','282fc606-9d31-4a3d-a44f-aab734f4ee67','title',this.value)">
         </div>
         <div class="card-actions">
-          <button class="icon-btn danger" onclick="removeCard('drama','6ce0d8ad-234e-419f-86b4-192115059df9')" title="删除">🗑</button>
+          <button class="icon-btn danger" onclick="removeCard('drama','282fc606-9d31-4a3d-a44f-aab734f4ee67')" title="删除">🗑</button>
         </div>
       </div>
 
-      <div class="card-field" data-lock-key="card:6ce0d8ad-234e-419f-86b4-192115059df9:progress">
+      <div class="card-field" data-lock-key="card:282fc606-9d31-4a3d-a44f-aab734f4ee67:progress">
         <div class="label">项目进度</div>
-        <textarea placeholder="例如：待播，7 月 31 日开播。" oninput="updateCardField('drama','6ce0d8ad-234e-419f-86b4-192115059df9','progress',this.value)"></textarea>
+        <textarea placeholder="例如：待播，7 月 31 日开播。" oninput="updateCardField('drama','282fc606-9d31-4a3d-a44f-aab734f4ee67','progress',this.value)"></textarea>
       </div>
 
-      <div class="card-field" data-lock-key="card:6ce0d8ad-234e-419f-86b4-192115059df9:visual">
+      <div class="card-field" data-lock-key="card:282fc606-9d31-4a3d-a44f-aab734f4ee67:visual">
         <div class="label">视觉进展</div>
-        <textarea placeholder="例如：单人场景海报 11 张，目前设计已完成，进入艺人修脸阶段。" oninput="updateCardField('drama','6ce0d8ad-234e-419f-86b4-192115059df9','visual',this.value)"></textarea>
+        <textarea placeholder="例如：单人场景海报 11 张，目前设计已完成，进入艺人修脸阶段。" oninput="updateCardField('drama','282fc606-9d31-4a3d-a44f-aab734f4ee67','visual',this.value)"></textarea>
       </div>
 
+      
+        <div class="card-field" data-lock-key="card:282fc606-9d31-4a3d-a44f-aab734f4ee67:difficulty">
+          <div class="label">
+            难点与对策
+            <span class="remove-field" onclick="removeCardField('drama','282fc606-9d31-4a3d-a44f-aab734f4ee67','difficulty')">移除</span>
+          </div>
+          <textarea placeholder="选填…" oninput="updateCardField('drama','282fc606-9d31-4a3d-a44f-aab734f4ee67','difficulty',this.value)"></textarea>
+        </div>
       
 
       
         <div class="card-field-add">
-          <span class="add-field-chip" onclick="addCardField('drama','6ce0d8ad-234e-419f-86b4-192115059df9','difficulty')">＋ 难点与对策</span><span class="add-field-chip" onclick="addCardField('drama','6ce0d8ad-234e-419f-86b4-192115059df9','issue')">＋ 存在问题</span><span class="add-field-chip" onclick="addCardField('drama','6ce0d8ad-234e-419f-86b4-192115059df9','nextStep')">＋ 后续规划</span>
+          <span class="add-field-chip" onclick="addCardField('drama','282fc606-9d31-4a3d-a44f-aab734f4ee67','issue')">＋ 存在问题</span><span class="add-field-chip" onclick="addCardField('drama','282fc606-9d31-4a3d-a44f-aab734f4ee67','nextStep')">＋ 后续规划</span>
         </div>
       
 
@@ -1233,6 +1231,40 @@
       <div class="card-meta">
         <span>由 <b style="color:#4f46e5">gaoluyang</b> 创建</span>
         <span>最近由 gaoluyang 更新</span>
+      </div>
+    </div>
+  
+    <div class="project-card" data-id="6ce0d8ad-234e-419f-86b4-192115059df9">
+      <div class="card-head">
+        <div class="card-title" data-lock-key="card:6ce0d8ad-234e-419f-86b4-192115059df9:title">
+          <input type="text" value="" placeholder="《项目名称》" onchange="updateCardField('drama','6ce0d8ad-234e-419f-86b4-192115059df9','title',this.value)">
+        </div>
+        <div class="card-actions">
+          <button class="icon-btn danger" onclick="removeCard('drama','6ce0d8ad-234e-419f-86b4-192115059df9')" title="删除">🗑</button>
+        </div>
+      </div>
+
+      <div class="card-field" data-lock-key="card:6ce0d8ad-234e-419f-86b4-192115059df9:progress">
+        <div class="label">项目进度</div>
+        <textarea placeholder="例如：待播，7 月 31 日开播。" oninput="updateCardField('drama','6ce0d8ad-234e-419f-86b4-192115059df9','progress',this.value)"></textarea>
+      </div>
+
+      <div class="card-field" data-lock-key="card:6ce0d8ad-234e-419f-86b4-192115059df9:visual">
+        <div class="label">视觉进展</div>
+        <textarea placeholder="例如：单人场景海报 11 张，目前设计已完成，进入艺人修脸阶段。" oninput="updateCardField('drama','6ce0d8ad-234e-419f-86b4-192115059df9','visual',this.value)"></textarea>
+      </div>
+
+      
+
+      
+        <div class="card-field-add">
+          <span class="add-field-chip" onclick="addCardField('drama','6ce0d8ad-234e-419f-86b4-192115059df9','difficulty')">＋ 难点与对策</span><span class="add-field-chip" onclick="addCardField('drama','6ce0d8ad-234e-419f-86b4-192115059df9','issue')">＋ 存在问题</span><span class="add-field-chip" onclick="addCardField('drama','6ce0d8ad-234e-419f-86b4-192115059df9','nextStep')">＋ 后续规划</span>
+        </div>
+      
+
+      <div class="card-meta">
+        <span>由 <b style="color:#059669">liubin</b> 创建</span>
+        <span>最近由 liubin 更新</span>
       </div>
     </div>
   
@@ -1653,189 +1685,9 @@
         </button>
       </div>
       <div style="padding:18px 22px;max-height:60vh;overflow-y:auto;">
-        <div id="admin-tab-members">
-        <div style="display:flex;align-items:center;gap:14px;padding:12px;border:1px solid var(--border);border-radius:8px;margin-bottom:8px;background:var(--panel-soft);">
-          <div style="width:40px;height:40px;border-radius:50%;background:#4f46e5;color:white;display:flex;align-items:center;justify-content:center;font-weight:600;position:relative;flex-shrink:0;">
-            G
-            <div style="position:absolute;right:-2px;bottom:-2px;width:12px;height:12px;background:var(--success);border:2px solid var(--panel);border-radius:50%;"></div>
-          </div>
-          <div style="flex:1;min-width:0;">
-            <div style="font-weight:500;font-size:14px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
-              gaoluyang
-              <span style="font-size:11px;color:var(--text-soft);font-weight:normal;">@gaoluyang</span>
-              <span style="font-size:10px;background:var(--primary-soft);color:var(--primary);padding:1px 6px;border-radius:4px;">管理员</span>
-              <span style="font-size:10px;background:var(--success-soft);color:var(--success);padding:1px 6px;border-radius:4px;">🟢 在线</span>
-            </div>
-            <div style="font-size:12px;color:var(--text-muted);margin-top:3px;">
-              加入时间：2026-08-27 16:15 · 最近登录：2026-08-27 18:19
-            </div>
-          </div>
-          <div style="display:flex;gap:6px;">
-            <button class="btn small ghost" onclick="showMemberActivity('gaoluyang')">查看活动</button>
-            
-          </div>
-        </div>
-      
-        <div style="display:flex;align-items:center;gap:14px;padding:12px;border:1px solid var(--border);border-radius:8px;margin-bottom:8px;background:var(--panel-soft);">
-          <div style="width:40px;height:40px;border-radius:50%;background:#059669;color:white;display:flex;align-items:center;justify-content:center;font-weight:600;position:relative;flex-shrink:0;">
-            L
-            <div style="position:absolute;right:-2px;bottom:-2px;width:12px;height:12px;background:var(--text-soft);border:2px solid var(--panel);border-radius:50%;"></div>
-          </div>
-          <div style="flex:1;min-width:0;">
-            <div style="font-weight:500;font-size:14px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
-              liubin
-              
-              
-              <span style="font-size:10px;color:var(--text-soft);">离线</span>
-            </div>
-            <div style="font-size:12px;color:var(--text-muted);margin-top:3px;">
-              加入时间：2026-08-27 16:19 · 最近登录：—
-            </div>
-          </div>
-          <div style="display:flex;gap:6px;">
-            <button class="btn small ghost" onclick="showMemberActivity('liubin')">查看活动</button>
-            <button class="btn small danger" onclick="deleteMember('liubin')">删除</button>
-          </div>
-        </div>
-      </div>
-        <div id="admin-tab-activity" style="display:none;">
-      <p style="font-size:12px;color:var(--text-muted);margin-bottom:10px;">最近 6 条活动（倒序）</p>
-      <table style="width:100%;border-collapse:collapse;font-size:13px;">
-        <thead>
-          <tr style="border-bottom:1px solid var(--border);text-align:left;color:var(--text-muted);font-size:12px;">
-            <th style="padding:8px 6px;font-weight:500;">时间</th>
-            <th style="padding:8px 6px;font-weight:500;">成员</th>
-            <th style="padding:8px 6px;font-weight:500;">动作</th>
-            <th style="padding:8px 6px;font-weight:500;">对象</th>
-            <th style="padding:8px 6px;font-weight:500;text-align:right;">时长</th>
-          </tr>
-        </thead>
-        <tbody>
-          
-            <tr style="border-bottom:1px solid var(--border);">
-              <td style="padding:8px 6px;color:var(--text-muted);white-space:nowrap;">2026-08-27 18:20</td>
-              <td style="padding:8px 6px;">
-                <span style="display:inline-flex;align-items:center;gap:5px;">
-                  <span style="width:6px;height:6px;background:#4f46e5;border-radius:50%"></span>
-                  gaoluyang
-                </span>
-              </td>
-              <td style="padding:8px 6px;">⚠️ 删除成员</td>
-              <td style="padding:8px 6px;color:var(--text-muted);">设计-成员B</td>
-              <td style="padding:8px 6px;text-align:right;color:var(--text-soft);white-space:nowrap;"></td>
-            </tr>
-          
-            <tr style="border-bottom:1px solid var(--border);">
-              <td style="padding:8px 6px;color:var(--text-muted);white-space:nowrap;">2026-08-27 18:20</td>
-              <td style="padding:8px 6px;">
-                <span style="display:inline-flex;align-items:center;gap:5px;">
-                  <span style="width:6px;height:6px;background:#4f46e5;border-radius:50%"></span>
-                  gaoluyang
-                </span>
-              </td>
-              <td style="padding:8px 6px;">⚠️ 删除成员</td>
-              <td style="padding:8px 6px;color:var(--text-muted);">设计-成员A</td>
-              <td style="padding:8px 6px;text-align:right;color:var(--text-soft);white-space:nowrap;"></td>
-            </tr>
-          
-            <tr style="border-bottom:1px solid var(--border);">
-              <td style="padding:8px 6px;color:var(--text-muted);white-space:nowrap;">2026-08-27 18:20</td>
-              <td style="padding:8px 6px;">
-                <span style="display:inline-flex;align-items:center;gap:5px;">
-                  <span style="width:6px;height:6px;background:#4f46e5;border-radius:50%"></span>
-                  gaoluyang
-                </span>
-              </td>
-              <td style="padding:8px 6px;">⚠️ 删除成员</td>
-              <td style="padding:8px 6px;color:var(--text-muted);">视觉-负责人</td>
-              <td style="padding:8px 6px;text-align:right;color:var(--text-soft);white-space:nowrap;"></td>
-            </tr>
-          
-            <tr style="border-bottom:1px solid var(--border);">
-              <td style="padding:8px 6px;color:var(--text-muted);white-space:nowrap;">2026-08-27 18:19</td>
-              <td style="padding:8px 6px;">
-                <span style="display:inline-flex;align-items:center;gap:5px;">
-                  <span style="width:6px;height:6px;background:#4f46e5;border-radius:50%"></span>
-                  gaoluyang
-                </span>
-              </td>
-              <td style="padding:8px 6px;">🔑 登录</td>
-              <td style="padding:8px 6px;color:var(--text-muted);">—</td>
-              <td style="padding:8px 6px;text-align:right;color:var(--text-soft);white-space:nowrap;"></td>
-            </tr>
-          
-            <tr style="border-bottom:1px solid var(--border);">
-              <td style="padding:8px 6px;color:var(--text-muted);white-space:nowrap;">2026-08-27 18:19</td>
-              <td style="padding:8px 6px;">
-                <span style="display:inline-flex;align-items:center;gap:5px;">
-                  <span style="width:6px;height:6px;background:#4f46e5;border-radius:50%"></span>
-                  gaoluyang
-                </span>
-              </td>
-              <td style="padding:8px 6px;">🚪 登出</td>
-              <td style="padding:8px 6px;color:var(--text-muted);">—</td>
-              <td style="padding:8px 6px;text-align:right;color:var(--text-soft);white-space:nowrap;"></td>
-            </tr>
-          
-            <tr style="border-bottom:1px solid var(--border);">
-              <td style="padding:8px 6px;color:var(--text-muted);white-space:nowrap;">2026-08-27 18:19</td>
-              <td style="padding:8px 6px;">
-                <span style="display:inline-flex;align-items:center;gap:5px;">
-                  <span style="width:6px;height:6px;background:#4f46e5;border-radius:50%"></span>
-                  gaoluyang
-                </span>
-              </td>
-              <td style="padding:8px 6px;">🔑 登录</td>
-              <td style="padding:8px 6px;color:var(--text-muted);">—</td>
-              <td style="padding:8px 6px;text-align:right;color:var(--text-soft);white-space:nowrap;"></td>
-            </tr>
-          
-        </tbody>
-      </table>
-    </div>
-        <div id="admin-tab-stats" style="display:none;">
-      <p style="font-size:12px;color:var(--text-muted);margin-bottom:10px;">按累计编辑时长排序</p>
-      <table style="width:100%;border-collapse:collapse;font-size:13px;">
-        <thead>
-          <tr style="border-bottom:1px solid var(--border);text-align:left;color:var(--text-muted);font-size:12px;">
-            <th style="padding:8px 6px;font-weight:500;">成员</th>
-            <th style="padding:8px 6px;font-weight:500;text-align:right;">登录次数</th>
-            <th style="padding:8px 6px;font-weight:500;text-align:right;">编辑次数</th>
-            <th style="padding:8px 6px;font-weight:500;text-align:right;">累计编辑时长</th>
-            <th style="padding:8px 6px;font-weight:500;">最近活跃</th>
-          </tr>
-        </thead>
-        <tbody>
-          
-            <tr style="border-bottom:1px solid var(--border);">
-              <td style="padding:10px 6px;">
-                <span style="display:inline-flex;align-items:center;gap:5px;">
-                  <span style="width:8px;height:8px;background:#059669;border-radius:50%"></span>
-                  liubin
-                </span>
-              </td>
-              <td style="padding:10px 6px;text-align:right;">0</td>
-              <td style="padding:10px 6px;text-align:right;">0</td>
-              <td style="padding:10px 6px;text-align:right;font-weight:500;color:var(--text-soft);">—</td>
-              <td style="padding:10px 6px;color:var(--text-muted);white-space:nowrap;">—</td>
-            </tr>
-          
-            <tr style="border-bottom:1px solid var(--border);">
-              <td style="padding:10px 6px;">
-                <span style="display:inline-flex;align-items:center;gap:5px;">
-                  <span style="width:8px;height:8px;background:#4f46e5;border-radius:50%"></span>
-                  gaoluyang
-                </span>
-              </td>
-              <td style="padding:10px 6px;text-align:right;">2</td>
-              <td style="padding:10px 6px;text-align:right;">0</td>
-              <td style="padding:10px 6px;text-align:right;font-weight:500;color:var(--text-soft);">—</td>
-              <td style="padding:10px 6px;color:var(--text-muted);white-space:nowrap;">2026-08-27 18:20</td>
-            </tr>
-          
-        </tbody>
-      </table>
-    </div>
+        <div id="admin-tab-members"></div>
+        <div id="admin-tab-activity" style="display:none;"></div>
+        <div id="admin-tab-stats" style="display:none;"></div>
       </div>
     </div>
     <div class="modal-footer">
