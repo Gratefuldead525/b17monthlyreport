@@ -934,12 +934,12 @@
     padding: 4px 0;
   }
 </style>
-<script id="__embedded_cloud_config__" type="application/json">{"url":"https://uchfjnxcyspseqpfbaxm.supabase.co","key":"sb_publishable_fO8pk_lDUaCu1DCKRi7Ywg_qjVjLcPg","inviteId":"invite_1787830577639_ntjua1"}</script>
+<script id="__embedded_cloud_config__" type="application/json">{"url":"https://uchfjnxcyspseqpfbaxm.supabase.co","key":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVjaGZqbnhjeXNwc2VxcGZiYXhtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc4MTAzMTAsImV4cCI6MjEwMzM4NjMxMH0.CfXA7kZ1M8cogcmM_ji0kaGq-tilv1H5VB7s9i2v8Hk","inviteId":"invite_1787831344_deploy"}</script>
 </head>
 <body>
 
 <!-- ============ Login Screen ============ -->
-<div id="login-screen" class="login-screen" style="display: none;">
+<div id="login-screen" class="login-screen">
   <div class="login-card">
     <h1>团队月报 · 在线协同</h1>
     <p class="sub">多账号协同填写视觉月报，AI 辅助总结</p>
@@ -952,34 +952,28 @@
     <div id="pane-login">
       <div class="form-row">
         <label>账号 ID 或昵称</label>
-        <input type="text" id="login-name" placeholder="如 gaoluyang 或 负责人-高陆洋" autocomplete="off" value="">
+        <input type="text" id="login-name" placeholder="如 gaoluyang 或 负责人-高陆洋" autocomplete="off">
       </div>
       <div class="form-row">
         <label>密码</label>
-        <input type="password" id="login-pwd" placeholder="输入密码" value="">
+        <input type="password" id="login-pwd" placeholder="输入密码">
       </div>
       <button class="btn full" onclick="doLogin()">登录</button>
 
       <div class="quick-users">
         <h4>本机已有账号（点击快捷登录）</h4>
-        <div class="user-chips" id="quick-users"><span class="user-chip" onclick="quickLogin('gaoluyang')">
-       <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#4f46e5;margin-right:4px;vertical-align:middle;"></span>
-       gaoluyang<span style="font-size:10px;color:var(--text-soft);margin-left:4px;">@gaoluyang</span>
-     </span><span class="user-chip" onclick="quickLogin('liubin')">
-       <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#059669;margin-right:4px;vertical-align:middle;"></span>
-       liubin<span style="font-size:10px;color:var(--text-soft);margin-left:4px;">@liubin</span>
-     </span></div>
+        <div class="user-chips" id="quick-users"></div>
       </div>
     </div>
 
     <div id="pane-register" style="display:none;">
       <div class="form-row">
         <label>昵称</label>
-        <input type="text" id="reg-name" placeholder="例如：设计-高陆洋" autocomplete="off" value="">
+        <input type="text" id="reg-name" placeholder="例如：设计-高陆洋" autocomplete="off">
       </div>
       <div class="form-row">
         <label>密码</label>
-        <input type="password" id="reg-pwd" placeholder="设置密码" value="">
+        <input type="password" id="reg-pwd" placeholder="设置密码">
       </div>
       <div class="form-row">
         <label>头像色</label>
@@ -999,21 +993,21 @@
 </div>
 
 <!-- ============ App Main ============ -->
-<div id="app" class="app active">
+<div id="app" class="app">
   <div class="top-bar">
     <div class="brand"><span class="brand-dot"></span> 团队月报</div>
     <span class="divider"></span>
     <div class="month-picker">
       <span style="font-size:13px;color:var(--text-muted)">月份：</span>
-      <select id="month-select" onchange="switchMonth()"><option value="2026-09">2026-09</option><option value="2026-08">2026-08</option></select>
+      <select id="month-select" onchange="switchMonth()"></select>
       <button class="btn small ghost" onclick="createNextMonth()">＋ 新月份</button>
     </div>
     <span class="autosave-hint" id="autosave-hint">已自动保存</span>
-    <span id="cloud-badge" style="display: inline-block; margin-left: 8px; font-size: 11px; padding: 2px 8px; border-radius: 999px; cursor: pointer; background: var(--success-soft); color: var(--success);" onclick="showCloudDialog()">☁️ 云端已连接</span>
+    <span id="cloud-badge" style="display:none;margin-left:8px;font-size:11px;padding:2px 8px;border-radius:999px;cursor:pointer;" onclick="showCloudDialog()"></span>
 
     <div class="theme-toggle" style="margin-left:auto;">
-      <button id="theme-btn-light" class="" onclick="setTheme('light')" title="浅色模式">☀️ 浅色</button>
-      <button id="theme-btn-dark" onclick="setTheme('dark')" title="深色模式" class="active">🌙 深色</button>
+      <button id="theme-btn-light" class="active" onclick="setTheme('light')" title="浅色模式">☀️ 浅色</button>
+      <button id="theme-btn-dark" onclick="setTheme('dark')" title="深色模式">🌙 深色</button>
     </div>
 
     <div class="active-users">
@@ -1022,16 +1016,16 @@
       <span class="divider"></span>
       <div class="user-menu">
         <div class="user-menu-trigger" onclick="toggleUserMenu(event)">
-          <div class="avatar me" id="me-avatar" style="background: rgb(79, 70, 229);">G</div>
-          <span id="me-name" style="font-size:13px;font-weight:500">gaoluyang</span>
+          <div class="avatar me" id="me-avatar"></div>
+          <span id="me-name" style="font-size:13px;font-weight:500"></span>
           <span style="color:var(--text-soft)">▾</span>
         </div>
         <div class="user-menu-panel" id="user-menu-panel">
           <button onclick="showSwitchAccount()">切换账号</button>
-          <button onclick="showAdminSettings()" id="admin-menu-btn" style="display: block;">⚙️ 管理员设定</button>
+          <button onclick="showAdminSettings()" id="admin-menu-btn" style="display:none;">⚙️ 管理员设定</button>
           <hr>
-          <button onclick="showCloudDialog()" id="cloud-menu-btn">☁️ 云同步设置</button>
-          <button onclick="doExportInviteHtml()" id="invite-menu-btn" style="display: block;">📤 生成邀请链接</button>
+          <button onclick="showCloudDialog()" id="cloud-menu-btn">☁️ 启用多人协同</button>
+          <button onclick="doExportInviteHtml()" id="invite-menu-btn" style="display:none;">📤 生成邀请链接</button>
           <hr>
           <button onclick="showFullText()">📄 生成完整文本（可复制）</button>
           <button onclick="doExportWord()">📝 导出 Word 文档</button>
@@ -1056,33 +1050,28 @@
       </div>
       <hr>
       <div class="nav-item" data-target="section-drama" onclick="scrollToSection('section-drama', this)">
-        <span>剧集</span><span class="count" id="count-drama">7</span>
+        <span>剧集</span><span class="count" id="count-drama">0</span>
       </div>
       <div class="nav-item" data-target="section-variety" onclick="scrollToSection('section-variety', this)">
-        <span>综艺</span><span class="count" id="count-variety">2</span>
+        <span>综艺</span><span class="count" id="count-variety">0</span>
       </div>
       <div class="nav-item" data-target="section-doc" onclick="scrollToSection('section-doc', this)">
-        <span>人文&amp;纪录片</span><span class="count" id="count-doc">2</span>
+        <span>人文&纪录片</span><span class="count" id="count-doc">0</span>
       </div>
       <hr>
       <div class="nav-item" data-target="section-finish" onclick="scrollToSection('section-finish', this)">
-        <span>✓ 完成 &amp; 导出</span>
+        <span>✓ 完成 & 导出</span>
       </div>
     </nav>
 
     <div class="content-area">
       <!-- 在线协作者面板 -->
-      <div class="online-panel" id="online-panel" style="display: flex;">
+      <div class="online-panel" id="online-panel" style="display:none;">
         <div class="online-title">
           <span class="pulse-dot"></span>
-          <span id="online-panel-title">当前在线（1）</span>
+          <span id="online-panel-title">当前在线（0）</span>
         </div>
-        <div id="online-user-list" style="display:flex;gap:8px;flex-wrap:wrap;flex:1;"><div class="online-user-card me" title="gaoluyang (我)">
-      <div class="avatar-sm" style="background:#4f46e5">G</div>
-      <span>gaoluyang <span style="opacity:0.7;font-weight:normal">(我)</span></span>
-      
-      
-    </div></div>
+        <div id="online-user-list" style="display:flex;gap:8px;flex-wrap:wrap;flex:1;"></div>
       </div>
 
       <!-- 本月核心进展 -->
@@ -1095,9 +1084,12 @@
         </div>
         <div class="summary-block" data-lock-key="month:summary">
           <h3>综合总结（管理者视角，1~2 段）</h3>
-          <textarea id="summary-text" rows="6" style="min-height:150px;" placeholder="点击右上角「✨ AI 生成」会综合剧集、综艺、人文&amp;纪录片三大板块，输出一段面向管理者的整体分析…" oninput="onFieldChange()"></textarea>
+          <textarea id="summary-text" rows="6"
+            style="min-height:150px;"
+            placeholder="点击右上角「✨ AI 生成」会综合剧集、综艺、人文&纪录片三大板块，输出一段面向管理者的整体分析…"
+            oninput="onFieldChange()"></textarea>
         </div>
-        <p class="summary-tip">💡 AI 会按 剧集 → 综艺 → 人文&amp;纪录片 的业务重要性顺序融合成整段文字，生成后可自由编辑。</p>
+        <p class="summary-tip">💡 AI 会按 剧集 → 综艺 → 人文&纪录片 的业务重要性顺序融合成整段文字，生成后可自由编辑。</p>
       </section>
 
       <!-- 下月重点规划 -->
@@ -1110,478 +1102,51 @@
         </div>
         <div class="summary-block" data-lock-key="month:plan">
           <h3>综合规划（管理者视角，1~2 段）</h3>
-          <textarea id="plan-text" rows="6" style="min-height:150px;" placeholder="点击右上角「✨ AI 生成」会综合下月三大板块的重点节点与规划，输出一段面向管理者的整体规划…" oninput="onFieldChange()"></textarea>
+          <textarea id="plan-text" rows="6"
+            style="min-height:150px;"
+            placeholder="点击右上角「✨ AI 生成」会综合下月三大板块的重点节点与规划，输出一段面向管理者的整体规划…"
+            oninput="onFieldChange()"></textarea>
         </div>
-        <p class="summary-tip">💡 AI 会按 剧集 → 综艺 → 人文&amp;纪录片 的业务重要性顺序融合成整段文字，生成后可自由编辑。</p>
+        <p class="summary-tip">💡 AI 会按 剧集 → 综艺 → 人文&纪录片 的业务重要性顺序融合成整段文字，生成后可自由编辑。</p>
       </section>
 
       <!-- 剧集 -->
       <section class="section" id="section-drama">
         <div class="section-header">
-          <h2>剧集 <span class="badge" id="badge-drama">7 个项目</span></h2>
+          <h2>剧集 <span class="badge" id="badge-drama">0 个项目</span></h2>
           <div class="actions">
             <button class="btn small" onclick="addCard('drama')">＋ 添加剧集</button>
           </div>
         </div>
-        <div class="cards-grid" id="grid-drama">
-    <div class="project-card" data-id="282fc606-9d31-4a3d-a44f-aab734f4ee67">
-      <div class="card-head">
-        <div class="card-title" data-lock-key="card:282fc606-9d31-4a3d-a44f-aab734f4ee67:title">
-          <input type="text" value="" placeholder="《项目名称》" onchange="updateCardField('drama','282fc606-9d31-4a3d-a44f-aab734f4ee67','title',this.value)">
-        </div>
-        <div class="card-actions">
-          <button class="icon-btn danger" onclick="removeCard('drama','282fc606-9d31-4a3d-a44f-aab734f4ee67')" title="删除">🗑</button>
-        </div>
-      </div>
-
-      <div class="card-field" data-lock-key="card:282fc606-9d31-4a3d-a44f-aab734f4ee67:progress">
-        <div class="label">项目进度</div>
-        <textarea placeholder="例如：待播，7 月 31 日开播。" oninput="updateCardField('drama','282fc606-9d31-4a3d-a44f-aab734f4ee67','progress',this.value)"></textarea>
-      </div>
-
-      <div class="card-field" data-lock-key="card:282fc606-9d31-4a3d-a44f-aab734f4ee67:visual">
-        <div class="label">视觉进展</div>
-        <textarea placeholder="例如：单人场景海报 11 张，目前设计已完成，进入艺人修脸阶段。" oninput="updateCardField('drama','282fc606-9d31-4a3d-a44f-aab734f4ee67','visual',this.value)"></textarea>
-      </div>
-
-      
-        <div class="card-field" data-lock-key="card:282fc606-9d31-4a3d-a44f-aab734f4ee67:difficulty">
-          <div class="label">
-            难点与对策
-            <span class="remove-field" onclick="removeCardField('drama','282fc606-9d31-4a3d-a44f-aab734f4ee67','difficulty')">移除</span>
-          </div>
-          <textarea placeholder="选填…" oninput="updateCardField('drama','282fc606-9d31-4a3d-a44f-aab734f4ee67','difficulty',this.value)"></textarea>
-        </div>
-      
-
-      
-        <div class="card-field-add">
-          <span class="add-field-chip" onclick="addCardField('drama','282fc606-9d31-4a3d-a44f-aab734f4ee67','issue')">＋ 存在问题</span><span class="add-field-chip" onclick="addCardField('drama','282fc606-9d31-4a3d-a44f-aab734f4ee67','nextStep')">＋ 后续规划</span>
-        </div>
-      
-
-      <div class="card-meta">
-        <span>由 <b style="color:#059669">liubin</b> 创建</span>
-        <span>最近由 liubin 更新</span>
-      </div>
-    </div>
-  
-    <div class="project-card" data-id="a216ea34-d59a-4956-b2d5-430e0fc85556">
-      <div class="card-head">
-        <div class="card-title" data-lock-key="card:a216ea34-d59a-4956-b2d5-430e0fc85556:title">
-          <input type="text" value="" placeholder="《项目名称》" onchange="updateCardField('drama','a216ea34-d59a-4956-b2d5-430e0fc85556','title',this.value)">
-        </div>
-        <div class="card-actions">
-          <button class="icon-btn danger" onclick="removeCard('drama','a216ea34-d59a-4956-b2d5-430e0fc85556')" title="删除">🗑</button>
-        </div>
-      </div>
-
-      <div class="card-field" data-lock-key="card:a216ea34-d59a-4956-b2d5-430e0fc85556:progress">
-        <div class="label">项目进度</div>
-        <textarea placeholder="例如：待播，7 月 31 日开播。" oninput="updateCardField('drama','a216ea34-d59a-4956-b2d5-430e0fc85556','progress',this.value)"></textarea>
-      </div>
-
-      <div class="card-field" data-lock-key="card:a216ea34-d59a-4956-b2d5-430e0fc85556:visual">
-        <div class="label">视觉进展</div>
-        <textarea placeholder="例如：单人场景海报 11 张，目前设计已完成，进入艺人修脸阶段。" oninput="updateCardField('drama','a216ea34-d59a-4956-b2d5-430e0fc85556','visual',this.value)"></textarea>
-      </div>
-
-      
-
-      
-        <div class="card-field-add">
-          <span class="add-field-chip" onclick="addCardField('drama','a216ea34-d59a-4956-b2d5-430e0fc85556','difficulty')">＋ 难点与对策</span><span class="add-field-chip" onclick="addCardField('drama','a216ea34-d59a-4956-b2d5-430e0fc85556','issue')">＋ 存在问题</span><span class="add-field-chip" onclick="addCardField('drama','a216ea34-d59a-4956-b2d5-430e0fc85556','nextStep')">＋ 后续规划</span>
-        </div>
-      
-
-      <div class="card-meta">
-        <span>由 <b style="color:#4f46e5">视觉-负责人</b> 创建</span>
-        <span>最近由 视觉-负责人 更新</span>
-      </div>
-    </div>
-  
-    <div class="project-card" data-id="bd261088-7483-4424-8a38-e0db16fd4020">
-      <div class="card-head">
-        <div class="card-title" data-lock-key="card:bd261088-7483-4424-8a38-e0db16fd4020:title">
-          <input type="text" value="" placeholder="《项目名称》" onchange="updateCardField('drama','bd261088-7483-4424-8a38-e0db16fd4020','title',this.value)">
-        </div>
-        <div class="card-actions">
-          <button class="icon-btn danger" onclick="removeCard('drama','bd261088-7483-4424-8a38-e0db16fd4020')" title="删除">🗑</button>
-        </div>
-      </div>
-
-      <div class="card-field" data-lock-key="card:bd261088-7483-4424-8a38-e0db16fd4020:progress">
-        <div class="label">项目进度</div>
-        <textarea placeholder="例如：待播，7 月 31 日开播。" oninput="updateCardField('drama','bd261088-7483-4424-8a38-e0db16fd4020','progress',this.value)"></textarea>
-      </div>
-
-      <div class="card-field" data-lock-key="card:bd261088-7483-4424-8a38-e0db16fd4020:visual">
-        <div class="label">视觉进展</div>
-        <textarea placeholder="例如：单人场景海报 11 张，目前设计已完成，进入艺人修脸阶段。" oninput="updateCardField('drama','bd261088-7483-4424-8a38-e0db16fd4020','visual',this.value)"></textarea>
-      </div>
-
-      
-
-      
-        <div class="card-field-add">
-          <span class="add-field-chip" onclick="addCardField('drama','bd261088-7483-4424-8a38-e0db16fd4020','difficulty')">＋ 难点与对策</span><span class="add-field-chip" onclick="addCardField('drama','bd261088-7483-4424-8a38-e0db16fd4020','issue')">＋ 存在问题</span><span class="add-field-chip" onclick="addCardField('drama','bd261088-7483-4424-8a38-e0db16fd4020','nextStep')">＋ 后续规划</span>
-        </div>
-      
-
-      <div class="card-meta">
-        <span>由 <b style="color:#4f46e5">gaoluyang</b> 创建</span>
-        <span>最近由 gaoluyang 更新</span>
-      </div>
-    </div>
-  
-    <div class="project-card" data-id="6ce0d8ad-234e-419f-86b4-192115059df9">
-      <div class="card-head">
-        <div class="card-title" data-lock-key="card:6ce0d8ad-234e-419f-86b4-192115059df9:title">
-          <input type="text" value="" placeholder="《项目名称》" onchange="updateCardField('drama','6ce0d8ad-234e-419f-86b4-192115059df9','title',this.value)">
-        </div>
-        <div class="card-actions">
-          <button class="icon-btn danger" onclick="removeCard('drama','6ce0d8ad-234e-419f-86b4-192115059df9')" title="删除">🗑</button>
-        </div>
-      </div>
-
-      <div class="card-field" data-lock-key="card:6ce0d8ad-234e-419f-86b4-192115059df9:progress">
-        <div class="label">项目进度</div>
-        <textarea placeholder="例如：待播，7 月 31 日开播。" oninput="updateCardField('drama','6ce0d8ad-234e-419f-86b4-192115059df9','progress',this.value)"></textarea>
-      </div>
-
-      <div class="card-field" data-lock-key="card:6ce0d8ad-234e-419f-86b4-192115059df9:visual">
-        <div class="label">视觉进展</div>
-        <textarea placeholder="例如：单人场景海报 11 张，目前设计已完成，进入艺人修脸阶段。" oninput="updateCardField('drama','6ce0d8ad-234e-419f-86b4-192115059df9','visual',this.value)"></textarea>
-      </div>
-
-      
-
-      
-        <div class="card-field-add">
-          <span class="add-field-chip" onclick="addCardField('drama','6ce0d8ad-234e-419f-86b4-192115059df9','difficulty')">＋ 难点与对策</span><span class="add-field-chip" onclick="addCardField('drama','6ce0d8ad-234e-419f-86b4-192115059df9','issue')">＋ 存在问题</span><span class="add-field-chip" onclick="addCardField('drama','6ce0d8ad-234e-419f-86b4-192115059df9','nextStep')">＋ 后续规划</span>
-        </div>
-      
-
-      <div class="card-meta">
-        <span>由 <b style="color:#059669">liubin</b> 创建</span>
-        <span>最近由 liubin 更新</span>
-      </div>
-    </div>
-  
-    <div class="project-card" data-id="d2409834-e222-4a62-bb65-87b6c9aaded5">
-      <div class="card-head">
-        <div class="card-title" data-lock-key="card:d2409834-e222-4a62-bb65-87b6c9aaded5:title">
-          <input type="text" value="" placeholder="《项目名称》" onchange="updateCardField('drama','d2409834-e222-4a62-bb65-87b6c9aaded5','title',this.value)">
-        </div>
-        <div class="card-actions">
-          <button class="icon-btn danger" onclick="removeCard('drama','d2409834-e222-4a62-bb65-87b6c9aaded5')" title="删除">🗑</button>
-        </div>
-      </div>
-
-      <div class="card-field" data-lock-key="card:d2409834-e222-4a62-bb65-87b6c9aaded5:progress">
-        <div class="label">项目进度</div>
-        <textarea placeholder="例如：待播，7 月 31 日开播。" oninput="updateCardField('drama','d2409834-e222-4a62-bb65-87b6c9aaded5','progress',this.value)"></textarea>
-      </div>
-
-      <div class="card-field" data-lock-key="card:d2409834-e222-4a62-bb65-87b6c9aaded5:visual">
-        <div class="label">视觉进展</div>
-        <textarea placeholder="例如：单人场景海报 11 张，目前设计已完成，进入艺人修脸阶段。" oninput="updateCardField('drama','d2409834-e222-4a62-bb65-87b6c9aaded5','visual',this.value)"></textarea>
-      </div>
-
-      
-
-      
-        <div class="card-field-add">
-          <span class="add-field-chip" onclick="addCardField('drama','d2409834-e222-4a62-bb65-87b6c9aaded5','difficulty')">＋ 难点与对策</span><span class="add-field-chip" onclick="addCardField('drama','d2409834-e222-4a62-bb65-87b6c9aaded5','issue')">＋ 存在问题</span><span class="add-field-chip" onclick="addCardField('drama','d2409834-e222-4a62-bb65-87b6c9aaded5','nextStep')">＋ 后续规划</span>
-        </div>
-      
-
-      <div class="card-meta">
-        <span>由 <b style="color:#4f46e5">视觉-负责人</b> 创建</span>
-        <span>最近由 视觉-负责人 更新</span>
-      </div>
-    </div>
-  
-    <div class="project-card" data-id="fd22825e-a05b-4d4a-bec2-1d90177f2f9f">
-      <div class="card-head">
-        <div class="card-title" data-lock-key="card:fd22825e-a05b-4d4a-bec2-1d90177f2f9f:title">
-          <input type="text" value="" placeholder="《项目名称》" onchange="updateCardField('drama','fd22825e-a05b-4d4a-bec2-1d90177f2f9f','title',this.value)">
-        </div>
-        <div class="card-actions">
-          <button class="icon-btn danger" onclick="removeCard('drama','fd22825e-a05b-4d4a-bec2-1d90177f2f9f')" title="删除">🗑</button>
-        </div>
-      </div>
-
-      <div class="card-field" data-lock-key="card:fd22825e-a05b-4d4a-bec2-1d90177f2f9f:progress">
-        <div class="label">项目进度</div>
-        <textarea placeholder="例如：待播，7 月 31 日开播。" oninput="updateCardField('drama','fd22825e-a05b-4d4a-bec2-1d90177f2f9f','progress',this.value)"></textarea>
-      </div>
-
-      <div class="card-field" data-lock-key="card:fd22825e-a05b-4d4a-bec2-1d90177f2f9f:visual">
-        <div class="label">视觉进展</div>
-        <textarea placeholder="例如：单人场景海报 11 张，目前设计已完成，进入艺人修脸阶段。" oninput="updateCardField('drama','fd22825e-a05b-4d4a-bec2-1d90177f2f9f','visual',this.value)"></textarea>
-      </div>
-
-      
-        <div class="card-field" data-lock-key="card:fd22825e-a05b-4d4a-bec2-1d90177f2f9f:difficulty">
-          <div class="label">
-            难点与对策
-            <span class="remove-field" onclick="removeCardField('drama','fd22825e-a05b-4d4a-bec2-1d90177f2f9f','difficulty')">移除</span>
-          </div>
-          <textarea placeholder="选填…" oninput="updateCardField('drama','fd22825e-a05b-4d4a-bec2-1d90177f2f9f','difficulty',this.value)"></textarea>
-        </div>
-      
-
-      
-        <div class="card-field-add">
-          <span class="add-field-chip" onclick="addCardField('drama','fd22825e-a05b-4d4a-bec2-1d90177f2f9f','issue')">＋ 存在问题</span><span class="add-field-chip" onclick="addCardField('drama','fd22825e-a05b-4d4a-bec2-1d90177f2f9f','nextStep')">＋ 后续规划</span>
-        </div>
-      
-
-      <div class="card-meta">
-        <span>由 <b style="color:#4f46e5">视觉-负责人</b> 创建</span>
-        <span>最近由 视觉-负责人 更新</span>
-      </div>
-    </div>
-  
-    <div class="project-card" data-id="d2cc5a69-b6af-4a9a-b410-3cd9d8b00922">
-      <div class="card-head">
-        <div class="card-title" data-lock-key="card:d2cc5a69-b6af-4a9a-b410-3cd9d8b00922:title">
-          <input type="text" value="" placeholder="《项目名称》" onchange="updateCardField('drama','d2cc5a69-b6af-4a9a-b410-3cd9d8b00922','title',this.value)">
-        </div>
-        <div class="card-actions">
-          <button class="icon-btn danger" onclick="removeCard('drama','d2cc5a69-b6af-4a9a-b410-3cd9d8b00922')" title="删除">🗑</button>
-        </div>
-      </div>
-
-      <div class="card-field" data-lock-key="card:d2cc5a69-b6af-4a9a-b410-3cd9d8b00922:progress">
-        <div class="label">项目进度</div>
-        <textarea placeholder="例如：待播，7 月 31 日开播。" oninput="updateCardField('drama','d2cc5a69-b6af-4a9a-b410-3cd9d8b00922','progress',this.value)"></textarea>
-      </div>
-
-      <div class="card-field" data-lock-key="card:d2cc5a69-b6af-4a9a-b410-3cd9d8b00922:visual">
-        <div class="label">视觉进展</div>
-        <textarea placeholder="例如：单人场景海报 11 张，目前设计已完成，进入艺人修脸阶段。" oninput="updateCardField('drama','d2cc5a69-b6af-4a9a-b410-3cd9d8b00922','visual',this.value)"></textarea>
-      </div>
-
-      
-        <div class="card-field" data-lock-key="card:d2cc5a69-b6af-4a9a-b410-3cd9d8b00922:nextStep">
-          <div class="label">
-            后续规划
-            <span class="remove-field" onclick="removeCardField('drama','d2cc5a69-b6af-4a9a-b410-3cd9d8b00922','nextStep')">移除</span>
-          </div>
-          <textarea placeholder="选填…" oninput="updateCardField('drama','d2cc5a69-b6af-4a9a-b410-3cd9d8b00922','nextStep',this.value)"></textarea>
-        </div>
-      
-
-      
-        <div class="card-field-add">
-          <span class="add-field-chip" onclick="addCardField('drama','d2cc5a69-b6af-4a9a-b410-3cd9d8b00922','difficulty')">＋ 难点与对策</span><span class="add-field-chip" onclick="addCardField('drama','d2cc5a69-b6af-4a9a-b410-3cd9d8b00922','issue')">＋ 存在问题</span>
-        </div>
-      
-
-      <div class="card-meta">
-        <span>由 <b style="color:#4f46e5">视觉-负责人</b> 创建</span>
-        <span>最近由 视觉-负责人 更新</span>
-      </div>
-    </div>
-  <button class="add-card-btn" onclick="addCard('drama')">＋ 继续添加</button></div>
+        <div class="cards-grid" id="grid-drama"></div>
       </section>
 
       <!-- 综艺 -->
       <section class="section" id="section-variety">
         <div class="section-header">
-          <h2>综艺 <span class="badge" id="badge-variety">2 个项目</span></h2>
+          <h2>综艺 <span class="badge" id="badge-variety">0 个项目</span></h2>
           <div class="actions">
             <button class="btn small" onclick="addCard('variety')">＋ 添加综艺</button>
           </div>
         </div>
-        <div class="cards-grid" id="grid-variety">
-    <div class="project-card" data-id="3b785622-8ac0-4838-a28e-101b77c2380d">
-      <div class="card-head">
-        <div class="card-title" data-lock-key="card:3b785622-8ac0-4838-a28e-101b77c2380d:title">
-          <input type="text" value="" placeholder="《项目名称》" onchange="updateCardField('variety','3b785622-8ac0-4838-a28e-101b77c2380d','title',this.value)">
-        </div>
-        <div class="card-actions">
-          <button class="icon-btn danger" onclick="removeCard('variety','3b785622-8ac0-4838-a28e-101b77c2380d')" title="删除">🗑</button>
-        </div>
-      </div>
-
-      <div class="card-field" data-lock-key="card:3b785622-8ac0-4838-a28e-101b77c2380d:progress">
-        <div class="label">项目进度</div>
-        <textarea placeholder="例如：待播，7 月 31 日开播。" oninput="updateCardField('variety','3b785622-8ac0-4838-a28e-101b77c2380d','progress',this.value)"></textarea>
-      </div>
-
-      <div class="card-field" data-lock-key="card:3b785622-8ac0-4838-a28e-101b77c2380d:visual">
-        <div class="label">视觉进展</div>
-        <textarea placeholder="例如：单人场景海报 11 张，目前设计已完成，进入艺人修脸阶段。" oninput="updateCardField('variety','3b785622-8ac0-4838-a28e-101b77c2380d','visual',this.value)"></textarea>
-      </div>
-
-      
-        <div class="card-field" data-lock-key="card:3b785622-8ac0-4838-a28e-101b77c2380d:issue">
-          <div class="label">
-            存在问题
-            <span class="remove-field" onclick="removeCardField('variety','3b785622-8ac0-4838-a28e-101b77c2380d','issue')">移除</span>
-          </div>
-          <textarea placeholder="选填…" oninput="updateCardField('variety','3b785622-8ac0-4838-a28e-101b77c2380d','issue',this.value)"></textarea>
-        </div>
-      
-
-      
-        <div class="card-field-add">
-          <span class="add-field-chip" onclick="addCardField('variety','3b785622-8ac0-4838-a28e-101b77c2380d','difficulty')">＋ 难点与对策</span><span class="add-field-chip" onclick="addCardField('variety','3b785622-8ac0-4838-a28e-101b77c2380d','nextStep')">＋ 后续规划</span>
-        </div>
-      
-
-      <div class="card-meta">
-        <span>由 <b style="color:#4f46e5">视觉-负责人</b> 创建</span>
-        <span>最近由 视觉-负责人 更新</span>
-      </div>
-    </div>
-  
-    <div class="project-card" data-id="1311ef38-3701-4b66-a21e-1087df4027dd">
-      <div class="card-head">
-        <div class="card-title" data-lock-key="card:1311ef38-3701-4b66-a21e-1087df4027dd:title">
-          <input type="text" value="" placeholder="《项目名称》" onchange="updateCardField('variety','1311ef38-3701-4b66-a21e-1087df4027dd','title',this.value)">
-        </div>
-        <div class="card-actions">
-          <button class="icon-btn danger" onclick="removeCard('variety','1311ef38-3701-4b66-a21e-1087df4027dd')" title="删除">🗑</button>
-        </div>
-      </div>
-
-      <div class="card-field" data-lock-key="card:1311ef38-3701-4b66-a21e-1087df4027dd:progress">
-        <div class="label">项目进度</div>
-        <textarea placeholder="例如：待播，7 月 31 日开播。" oninput="updateCardField('variety','1311ef38-3701-4b66-a21e-1087df4027dd','progress',this.value)"></textarea>
-      </div>
-
-      <div class="card-field" data-lock-key="card:1311ef38-3701-4b66-a21e-1087df4027dd:visual">
-        <div class="label">视觉进展</div>
-        <textarea placeholder="例如：单人场景海报 11 张，目前设计已完成，进入艺人修脸阶段。" oninput="updateCardField('variety','1311ef38-3701-4b66-a21e-1087df4027dd','visual',this.value)"></textarea>
-      </div>
-
-      
-        <div class="card-field" data-lock-key="card:1311ef38-3701-4b66-a21e-1087df4027dd:issue">
-          <div class="label">
-            存在问题
-            <span class="remove-field" onclick="removeCardField('variety','1311ef38-3701-4b66-a21e-1087df4027dd','issue')">移除</span>
-          </div>
-          <textarea placeholder="选填…" oninput="updateCardField('variety','1311ef38-3701-4b66-a21e-1087df4027dd','issue',this.value)"></textarea>
-        </div>
-      
-
-      
-        <div class="card-field-add">
-          <span class="add-field-chip" onclick="addCardField('variety','1311ef38-3701-4b66-a21e-1087df4027dd','difficulty')">＋ 难点与对策</span><span class="add-field-chip" onclick="addCardField('variety','1311ef38-3701-4b66-a21e-1087df4027dd','nextStep')">＋ 后续规划</span>
-        </div>
-      
-
-      <div class="card-meta">
-        <span>由 <b style="color:#4f46e5">视觉-负责人</b> 创建</span>
-        <span>最近由 视觉-负责人 更新</span>
-      </div>
-    </div>
-  <button class="add-card-btn" onclick="addCard('variety')">＋ 继续添加</button></div>
+        <div class="cards-grid" id="grid-variety"></div>
       </section>
 
       <!-- 人文&纪录片 -->
       <section class="section" id="section-doc">
         <div class="section-header">
-          <h2>人文&amp;纪录片 <span class="badge" id="badge-doc">2 个项目</span></h2>
+          <h2>人文&纪录片 <span class="badge" id="badge-doc">0 个项目</span></h2>
           <div class="actions">
             <button class="btn small" onclick="addCard('doc')">＋ 添加人文/纪录片</button>
           </div>
         </div>
-        <div class="cards-grid" id="grid-doc">
-    <div class="project-card" data-id="aa128609-a4b1-4139-acca-b6abe2791463">
-      <div class="card-head">
-        <div class="card-title" data-lock-key="card:aa128609-a4b1-4139-acca-b6abe2791463:title">
-          <input type="text" value="" placeholder="《项目名称》" onchange="updateCardField('doc','aa128609-a4b1-4139-acca-b6abe2791463','title',this.value)">
-        </div>
-        <div class="card-actions">
-          <button class="icon-btn danger" onclick="removeCard('doc','aa128609-a4b1-4139-acca-b6abe2791463')" title="删除">🗑</button>
-        </div>
-      </div>
-
-      <div class="card-field" data-lock-key="card:aa128609-a4b1-4139-acca-b6abe2791463:progress">
-        <div class="label">项目进度</div>
-        <textarea placeholder="例如：待播，7 月 31 日开播。" oninput="updateCardField('doc','aa128609-a4b1-4139-acca-b6abe2791463','progress',this.value)"></textarea>
-      </div>
-
-      <div class="card-field" data-lock-key="card:aa128609-a4b1-4139-acca-b6abe2791463:visual">
-        <div class="label">视觉进展</div>
-        <textarea placeholder="例如：单人场景海报 11 张，目前设计已完成，进入艺人修脸阶段。" oninput="updateCardField('doc','aa128609-a4b1-4139-acca-b6abe2791463','visual',this.value)"></textarea>
-      </div>
-
-      
-        <div class="card-field" data-lock-key="card:aa128609-a4b1-4139-acca-b6abe2791463:issue">
-          <div class="label">
-            存在问题
-            <span class="remove-field" onclick="removeCardField('doc','aa128609-a4b1-4139-acca-b6abe2791463','issue')">移除</span>
-          </div>
-          <textarea placeholder="选填…" oninput="updateCardField('doc','aa128609-a4b1-4139-acca-b6abe2791463','issue',this.value)"></textarea>
-        </div>
-      
-
-      
-        <div class="card-field-add">
-          <span class="add-field-chip" onclick="addCardField('doc','aa128609-a4b1-4139-acca-b6abe2791463','difficulty')">＋ 难点与对策</span><span class="add-field-chip" onclick="addCardField('doc','aa128609-a4b1-4139-acca-b6abe2791463','nextStep')">＋ 后续规划</span>
-        </div>
-      
-
-      <div class="card-meta">
-        <span>由 <b style="color:#4f46e5">视觉-负责人</b> 创建</span>
-        <span>最近由 视觉-负责人 更新</span>
-      </div>
-    </div>
-  
-    <div class="project-card" data-id="fd60167c-be4c-429e-b0fa-dcc6e088fd76">
-      <div class="card-head">
-        <div class="card-title" data-lock-key="card:fd60167c-be4c-429e-b0fa-dcc6e088fd76:title">
-          <input type="text" value="" placeholder="《项目名称》" onchange="updateCardField('doc','fd60167c-be4c-429e-b0fa-dcc6e088fd76','title',this.value)">
-        </div>
-        <div class="card-actions">
-          <button class="icon-btn danger" onclick="removeCard('doc','fd60167c-be4c-429e-b0fa-dcc6e088fd76')" title="删除">🗑</button>
-        </div>
-      </div>
-
-      <div class="card-field" data-lock-key="card:fd60167c-be4c-429e-b0fa-dcc6e088fd76:progress">
-        <div class="label">项目进度</div>
-        <textarea placeholder="例如：待播，7 月 31 日开播。" oninput="updateCardField('doc','fd60167c-be4c-429e-b0fa-dcc6e088fd76','progress',this.value)"></textarea>
-      </div>
-
-      <div class="card-field" data-lock-key="card:fd60167c-be4c-429e-b0fa-dcc6e088fd76:visual">
-        <div class="label">视觉进展</div>
-        <textarea placeholder="例如：单人场景海报 11 张，目前设计已完成，进入艺人修脸阶段。" oninput="updateCardField('doc','fd60167c-be4c-429e-b0fa-dcc6e088fd76','visual',this.value)"></textarea>
-      </div>
-
-      
-        <div class="card-field" data-lock-key="card:fd60167c-be4c-429e-b0fa-dcc6e088fd76:issue">
-          <div class="label">
-            存在问题
-            <span class="remove-field" onclick="removeCardField('doc','fd60167c-be4c-429e-b0fa-dcc6e088fd76','issue')">移除</span>
-          </div>
-          <textarea placeholder="选填…" oninput="updateCardField('doc','fd60167c-be4c-429e-b0fa-dcc6e088fd76','issue',this.value)"></textarea>
-        </div>
-      
-
-      
-        <div class="card-field-add">
-          <span class="add-field-chip" onclick="addCardField('doc','fd60167c-be4c-429e-b0fa-dcc6e088fd76','difficulty')">＋ 难点与对策</span><span class="add-field-chip" onclick="addCardField('doc','fd60167c-be4c-429e-b0fa-dcc6e088fd76','nextStep')">＋ 后续规划</span>
-        </div>
-      
-
-      <div class="card-meta">
-        <span>由 <b style="color:#4f46e5">视觉-负责人</b> 创建</span>
-        <span>最近由 视觉-负责人 更新</span>
-      </div>
-    </div>
-  <button class="add-card-btn" onclick="addCard('doc')">＋ 继续添加</button></div>
+        <div class="cards-grid" id="grid-doc"></div>
       </section>
 
       <!-- 完成 & 导出区 -->
       <section class="section" id="section-finish">
         <div class="section-header">
-          <h2>完成 &amp; 导出 <span class="badge">最后一步</span></h2>
+          <h2>完成 & 导出 <span class="badge">最后一步</span></h2>
           <span class="autosave-hint" id="finish-hint" style="color:var(--text-soft)"></span>
         </div>
         <p style="font-size:13px;color:var(--text-muted);margin-bottom:14px">
@@ -1605,7 +1170,9 @@
               <button class="btn small ghost" onclick="closeFullText()">关闭</button>
             </div>
           </div>
-          <textarea id="fulltext-area" style="width:100%;min-height:400px;padding:14px 16px;border:1px solid var(--border);border-radius:6px;font-family:-apple-system,'PingFang SC','Microsoft YaHei',monospace;font-size:13.5px;line-height:1.8;background:#fafbfc;color:var(--text);white-space:pre-wrap;resize:vertical;" readonly="" onclick="this.select()"></textarea>
+          <textarea id="fulltext-area"
+            style="width:100%;min-height:400px;padding:14px 16px;border:1px solid var(--border);border-radius:6px;font-family:-apple-system,'PingFang SC','Microsoft YaHei',monospace;font-size:13.5px;line-height:1.8;background:#fafbfc;color:var(--text);white-space:pre-wrap;resize:vertical;"
+            readonly onclick="this.select()"></textarea>
         </div>
       </section>
     </div>
@@ -1621,7 +1188,7 @@
     </div>
     <div class="modal-body">
       <p style="font-size:13px;color:var(--text-muted);margin-bottom:10px">粘贴之前导出的 JSON 数据（会替换当前月份的所有内容）：</p>
-      <textarea id="import-textarea" style="width:100%;min-height:280px;padding:12px;font-family:monospace;font-size:12px;border:1px solid var(--border);border-radius:6px;" placeholder="{&quot;drama&quot;:[...],&quot;variety&quot;:[...],&quot;doc&quot;:[...],&quot;summary&quot;:{...},&quot;plan&quot;:{...}}"></textarea>
+      <textarea id="import-textarea" style="width:100%;min-height:280px;padding:12px;font-family:monospace;font-size:12px;border:1px solid var(--border);border-radius:6px;" placeholder='{"drama":[...],"variety":[...],"doc":[...],"summary":{...},"plan":{...}}'></textarea>
     </div>
     <div class="modal-footer">
       <button class="btn ghost" onclick="closeModal('import-modal')">取消</button>
@@ -1646,7 +1213,7 @@
         </p>
         <div class="form-row">
           <label>Supabase Project URL</label>
-          <input type="text" id="cloud-url" placeholder="https://xxxxx.supabase.co" value="">
+          <input type="text" id="cloud-url" placeholder="https://xxxxx.supabase.co">
         </div>
         <div class="form-row">
           <label>anon public key</label>
@@ -1674,13 +1241,16 @@
     </div>
     <div class="modal-body" style="padding:0;">
       <div style="display:flex;border-bottom:1px solid var(--border);">
-        <button class="admin-tab active" data-tab="members" onclick="switchAdminTab('members', this)" style="flex:1;padding:14px;background:transparent;border:none;cursor:pointer;font-size:13px;color:var(--text);border-bottom:2px solid var(--primary);font-weight:500;">
+        <button class="admin-tab active" data-tab="members" onclick="switchAdminTab('members', this)"
+                style="flex:1;padding:14px;background:transparent;border:none;cursor:pointer;font-size:13px;color:var(--text);border-bottom:2px solid var(--primary);font-weight:500;">
           👥 团队成员
         </button>
-        <button class="admin-tab" data-tab="activity" onclick="switchAdminTab('activity', this)" style="flex:1;padding:14px;background:transparent;border:none;cursor:pointer;font-size:13px;color:var(--text-muted);border-bottom:2px solid transparent;">
+        <button class="admin-tab" data-tab="activity" onclick="switchAdminTab('activity', this)"
+                style="flex:1;padding:14px;background:transparent;border:none;cursor:pointer;font-size:13px;color:var(--text-muted);border-bottom:2px solid transparent;">
           📊 活动日志
         </button>
-        <button class="admin-tab" data-tab="stats" onclick="switchAdminTab('stats', this)" style="flex:1;padding:14px;background:transparent;border:none;cursor:pointer;font-size:13px;color:var(--text-muted);border-bottom:2px solid transparent;">
+        <button class="admin-tab" data-tab="stats" onclick="switchAdminTab('stats', this)"
+                style="flex:1;padding:14px;background:transparent;border:none;cursor:pointer;font-size:13px;color:var(--text-muted);border-bottom:2px solid transparent;">
           ⏱ 编写统计
         </button>
       </div>
@@ -4254,8 +3824,6 @@ window.renderAll = function() {
   }
 })();
 </script>
-
-
 
 </body>
 </html>
