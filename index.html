@@ -1574,12 +1574,14 @@ function newCard() {
 }
 
 function addCard(category) {
-  const md = getMonthData();
-  md[category].unshift(newCard());
-  persist();
+  const data = loadData();
+  if (!data[currentMonth]) data[currentMonth] = { drama:[], variety:[], doc:[], summary:{text:''}, plan:{text:''} };
+  data[currentMonth][category].unshift(newCard());
+  data[currentMonth]._updatedAt = Date.now();
+  data[currentMonth]._updatedBy = currentUser ? currentUser.name : '';
+  saveData(data);
   renderCategory(category);
   updateCounts();
-  // focus new card
   setTimeout(() => {
     const grid = document.getElementById('grid-' + category);
     const firstInput = grid.querySelector('input');
@@ -1589,39 +1591,52 @@ function addCard(category) {
 
 function removeCard(category, id) {
   if (!confirm('确定删除该项目卡片吗？')) return;
-  const md = getMonthData();
+  const data = loadData();
+  if (!data[currentMonth]) return;
+  const md = data[currentMonth];
   md[category] = md[category].filter(c => c.id !== id);
-  persist();
+  md._updatedAt = Date.now();
+  md._updatedBy = currentUser ? currentUser.name : '';
+  saveData(data);
   renderCategory(category);
   updateCounts();
   toast('已删除', 'success');
 }
 
 function updateCardField(category, id, field, value) {
-  const md = getMonthData();
+  const data = loadData();
+  if (!data[currentMonth]) return;
+  const md = data[currentMonth];
   const card = md[category].find(c => c.id === id);
   if (!card) return;
   card[field] = value;
   card.updatedAt = Date.now();
-  card.updatedBy = currentUser.name;
-  persist();
+  card.updatedBy = currentUser ? currentUser.name : '';
+  md._updatedAt = Date.now();
+  md._updatedBy = currentUser ? currentUser.name : '';
+  saveData(data);
+  showAutosave();
 }
 
 function addCardField(category, id, field) {
-  const md = getMonthData();
+  const data = loadData();
+  if (!data[currentMonth]) return;
+  const md = data[currentMonth];
   const card = md[category].find(c => c.id === id);
   if (!card) return;
   card[field] = '';
-  persist();
+  saveData(data);
   renderCategory(category);
 }
 
 function removeCardField(category, id, field) {
-  const md = getMonthData();
+  const data = loadData();
+  if (!data[currentMonth]) return;
+  const md = data[currentMonth];
   const card = md[category].find(c => c.id === id);
   if (!card) return;
   card[field] = null;
-  persist();
+  saveData(data);
   renderCategory(category);
 }
 
@@ -1711,10 +1726,15 @@ function renderSummary() {
 }
 
 function onFieldChange() {
-  const md = getMonthData();
+  const data = loadData();
+  if (!data[currentMonth]) data[currentMonth] = { drama:[], variety:[], doc:[], summary:{text:''}, plan:{text:''} };
+  const md = data[currentMonth];
   md.summary.text = document.getElementById('summary-text').value;
   md.plan.text = document.getElementById('plan-text').value;
-  persist();
+  md._updatedAt = Date.now();
+  md._updatedBy = currentUser ? currentUser.name : '';
+  saveData(data);
+  showAutosave();
 }
 
 function renderAll() {
@@ -1747,19 +1767,55 @@ function renderOnlineUsers() {
 
 // ============ AI Summary Generation (rule-based, unified paragraph) ============
 function generateSummary(kind) {
-  const md = getMonthData();
+  // 必须用 loadData() 直接操作完整 data 对象，修改后 saveData 再渲染
+  // 否则 getMonthData() 每次返回新对象，修改会丢失
+  const data = loadData();
+  if (!data[currentMonth]) data[currentMonth] = { drama:[], variety:[], doc:[], summary:{text:''}, plan:{text:''} };
+  const md = data[currentMonth];
   const monthLabel = currentMonth;
 
   if (kind === 'summary') {
     md.summary.text = generateUnifiedSummary(md, monthLabel);
+    md._updatedAt = Date.now();
+    md._updatedBy = currentUser ? currentUser.name : '';
+    saveData(data);
     renderSummary();
-    persist();
+    // 云端同步
+    if (typeof CLOUD !== 'undefined' && CLOUD.connected) {
+      scheduleCloudUpdate('month:' + currentMonth, () =>
+        CLOUD.client.from('mr_months').upsert({
+          month_key: currentMonth,
+          summary_text: md.summary.text || '',
+          plan_text: md.plan.text || '',
+          summary_updated_by: currentUser.name,
+          plan_updated_at: new Date().toISOString(),
+          summary_updated_at: new Date().toISOString(),
+          plan_updated_by: currentUser.name
+        }, { onConflict: 'month_key' })
+      );
+    }
     toast('已生成本月核心进展', 'success');
     try { if (typeof logActivity === 'function') logActivity('ai_generate', { target: '本月核心进展' }); } catch {}
   } else {
     md.plan.text = generateUnifiedPlan(md, monthLabel);
+    md._updatedAt = Date.now();
+    md._updatedBy = currentUser ? currentUser.name : '';
+    saveData(data);
     renderSummary();
-    persist();
+    // 云端同步
+    if (typeof CLOUD !== 'undefined' && CLOUD.connected) {
+      scheduleCloudUpdate('month:' + currentMonth, () =>
+        CLOUD.client.from('mr_months').upsert({
+          month_key: currentMonth,
+          summary_text: md.summary.text || '',
+          plan_text: md.plan.text || '',
+          summary_updated_by: currentUser.name,
+          plan_updated_at: new Date().toISOString(),
+          summary_updated_at: new Date().toISOString(),
+          plan_updated_by: currentUser.name
+        }, { onConflict: 'month_key' })
+      );
+    }
     toast('已生成下月重点规划', 'success');
     try { if (typeof logActivity === 'function') logActivity('ai_generate', { target: '下月重点规划' }); } catch {}
   }
